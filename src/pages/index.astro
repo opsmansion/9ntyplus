@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { GravityStarsBackground } from "../components/ui/gravity-stars";
+---
+
+<BaseLayout>
+  <main class="relative isolate flex min-h-dvh items-center justify-center px-5 py-24 sm:px-8">
+    <GravityStarsBackground client:load className="absolute inset-0" aria-hidden="true" />
+    <section aria-labelledby="coming-soon-heading" class="relative z-10 w-full max-w-2xl text-center">
+      <h1 id="coming-soon-heading" class="font-heading text-4xl font-medium leading-tight tracking-tight text-balance sm:text-5xl">Something exciting is happening.</h1>
+    </section>
+  </main>
+</BaseLayout>

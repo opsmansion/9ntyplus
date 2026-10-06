@@ -1,0 +1,20 @@
+---
+import "../styles/global.css";
+import themeScript from "../lib/theme.js?raw";
+
+const { title = "9ntyplus" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="h-full font-sans antialiased">
+  <head>
+    <meta charset="UTF-8" />
+    <script is:inline set:html={themeScript} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Something exciting is happening at 9ntyplus." />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-dvh bg-background text-foreground">
+    <slot />
+  </body>
+</html>

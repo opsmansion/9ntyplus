@@ -1,0 +1,222 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: "Reddit Sans";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/reddit-sans/RedditSans-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/reddit-sans/RedditSans-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/reddit-sans/RedditSans-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/reddit-sans/RedditSans-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/reddit-sans/RedditSans-ExtraBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/reddit-sans/RedditSans-LightItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/reddit-sans/RedditSans-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/reddit-sans/RedditSans-SemiBoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/reddit-sans/RedditSans-BoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Reddit Sans";
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/fonts/reddit-sans/RedditSans-ExtraBoldItalic.woff2") format("woff2");
+}
+
+@theme inline {
+  --breakpoint-site-nav: 72rem;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-reddit-sans);
+  --font-heading: var(--font-reddit-sans);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-chart-5: var(--chart-5);
+  --color-chart-3: var(--chart-3);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --font-reddit-sans: "Reddit Sans", sans-serif;
+  --duration-fast: 140ms;
+  --duration-normal: 220ms;
+  --duration-slow: 280ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-emphasized: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: light;
+  --brand: #ff4501;
+  --brand-foreground: #000000;
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: var(--foreground);
+  --popover: #ffffff;
+  --popover-foreground: var(--foreground);
+  --primary: var(--brand);
+  --primary-foreground: var(--brand-foreground);
+  --secondary: #f4f4f5;
+  --secondary-foreground: var(--foreground);
+  --muted: var(--secondary);
+  --muted-foreground: #71717a;
+  --accent: #fff1ec;
+  --accent-foreground: #c93600;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e4e4e7;
+  --input: var(--border);
+  --ring: var(--primary);
+  --chart-3: var(--accent-foreground);
+  --chart-5: color-mix(in srgb, var(--accent-foreground) 70%, var(--foreground));
+  --radius: 0.45rem;
+}
+
+.dark {
+  color-scheme: dark;
+  --brand: #ff4501;
+  --brand-foreground: #000000;
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #18181b;
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: #ff5a1f;
+  --primary-foreground: var(--brand-foreground);
+  --secondary: #27272a;
+  --secondary-foreground: var(--foreground);
+  --muted: var(--secondary);
+  --muted-foreground: #a1a1aa;
+  --accent: #3a1810;
+  --accent-foreground: #ff7a4d;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: var(--secondary);
+  --input: var(--border);
+  --ring: var(--primary);
+  --chart-3: var(--accent-foreground);
+  --chart-5: color-mix(in srgb, var(--accent-foreground) 70%, var(--foreground));
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+.motion-press {
+  transition-property: transform, background-color, color, border-color, opacity;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--ease-standard);
+}
+
+.motion-press:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: scale(0.97);
+}
+
+.motion-link {
+  transition-property: color, opacity, text-decoration-color;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--ease-standard);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+  }
+}
