@@ -79,7 +79,7 @@ await writeFile(new URL("public/apple-touch-icon.png", root), await png(square, 
 for (const size of [192, 512]) await writeFile(new URL(`public/icons/icon-${size}.png`, root), await png(square, size));
 
 await writeFile(new URL("public/site.webmanifest", root), JSON.stringify({
-  name: "90+ by Opesi Mansion",
+  name: "90+",
   short_name: "90+",
   icons: [
     { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any maskable" },
