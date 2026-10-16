@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import themeScript from "../lib/theme.js?raw";
 import SiteHeader from "../components/site-header.astro";
 import SiteFooter from "../components/site-footer.astro";
 import { product } from "../lib/site";
@@ -21,7 +20,6 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site);
 <html lang="en" class="h-full font-sans antialiased">
   <head>
     <meta charset="UTF-8" />
-    <script is:inline set:html={themeScript} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />

@@ -1,5 +1,5 @@
 ---
-import { RiArrowDownSLine, RiCloseLine, RiMenuLine, RiMoonLine, RiSunLine } from "@remixicon/react";
+import { RiArrowDownSLine, RiCloseLine, RiMenuLine } from "@remixicon/react";
 import { buttonVariants } from "./ui/button";
 import { earlyAccess, links, navigation, product, talkToSales } from "../lib/site";
 ---
@@ -7,7 +7,6 @@ import { earlyAccess, links, navigation, product, talkToSales } from "../lib/sit
 <div class="topbar">
   <p class="shell flex min-h-10 flex-wrap items-center justify-center gap-x-3 gap-y-1 py-2 text-center text-sm">
     <span>{product.name} is the first product from {product.maker}.</span>
-    <a href={talkToSales("promo-bar")}>Talk to sales</a>
   </p>
 </div>
 
@@ -39,11 +38,6 @@ import { earlyAccess, links, navigation, product, talkToSales } from "../lib/sit
     </nav>
 
     <div class="flex items-center gap-1.5">
-      <button type="button" data-theme-toggle class="motion-press grid size-10 place-items-center rounded-full text-[var(--heading)] hover:bg-muted focus-visible:outline-2 focus-visible:outline-ring" aria-label="Switch color theme">
-        <RiMoonLine aria-hidden="true" className="size-5 dark:hidden" />
-        <RiSunLine aria-hidden="true" className="hidden size-5 dark:block" />
-      </button>
-      <a href={talkToSales("header")} class="nav-link hidden sm:flex">Talk to sales</a>
       <a href={earlyAccess("header")} class={buttonVariants({ size: "lg", className: "hidden min-h-10 rounded-full px-5 font-semibold sm:inline-flex" })}>Early Access</a>
       <details class="site-nav:hidden" data-mobile-menu>
         <summary aria-label="Menu" class="grid size-10 cursor-pointer list-none place-items-center rounded-full text-[var(--heading)] hover:bg-muted [&::-webkit-details-marker]:hidden">
@@ -61,7 +55,6 @@ import { earlyAccess, links, navigation, product, talkToSales } from "../lib/sit
           ))}
           <div class="grid gap-2 pt-5">
             <a href={earlyAccess("mobile-menu")} class={buttonVariants({ size: "lg", className: "min-h-11 w-full rounded-full font-semibold" })}>Early Access</a>
-            <a href={talkToSales("mobile-menu")} class={buttonVariants({ variant: "outline", size: "lg", className: "min-h-11 w-full rounded-full" })}>Talk to sales</a>
           </div>
         </nav>
       </details>
@@ -88,9 +81,5 @@ import { earlyAccess, links, navigation, product, talkToSales } from "../lib/sit
   });
   document.addEventListener("pointerdown", (event) => {
     menus.forEach((menu) => menu.open && !menu.contains(event.target as Node) && (menu.open = false));
-  });
-  document.querySelector("[data-theme-toggle]")?.addEventListener("click", () => {
-    const next = document.documentElement.classList.contains("dark") ? "light" : "dark";
-    window.dispatchEvent(new CustomEvent("opesi:theme-change", { detail: next }));
   });
 </script>
