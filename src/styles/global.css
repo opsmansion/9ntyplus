@@ -1,3 +1,5 @@
+/* 90+ (9ntyplus.com), an Opesi Mansion product. Shares Opesi Mansion fonts and structure; colors use the
+   shadcn "Ocean Breeze" preset from tweakcn (Route Green), with navy text on green for contrast. */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -85,15 +87,18 @@
 }
 
 @theme inline {
-  --breakpoint-site-nav: 72rem;
+  --breakpoint-site-nav: 63.75rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-reddit-sans);
   --font-heading: var(--font-reddit-sans);
   --color-brand: var(--brand);
   --color-brand-foreground: var(--brand-foreground);
-  --color-chart-5: var(--chart-5);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -120,6 +125,7 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Route Green. Light values come straight from the preset except --primary-foreground (navy instead of white). */
 :root {
   --font-reddit-sans: "Reddit Sans", sans-serif;
   --duration-fast: 140ms;
@@ -129,62 +135,78 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-emphasized: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: light;
-  --brand: #ff4501;
-  --brand-foreground: #000000;
-  --background: #ffffff;
-  --foreground: #000000;
-  --card: #ffffff;
-  --card-foreground: var(--foreground);
-  --popover: #ffffff;
-  --popover-foreground: var(--foreground);
-  --primary: var(--brand);
-  --primary-foreground: var(--brand-foreground);
-  --secondary: #f4f4f5;
-  --secondary-foreground: var(--foreground);
-  --muted: var(--secondary);
-  --muted-foreground: #71717a;
-  --accent: #fff1ec;
-  --accent-foreground: #c93600;
-  --destructive: #dc2626;
-  --destructive-foreground: #ffffff;
-  --border: #e4e4e7;
-  --input: var(--border);
-  --ring: var(--primary);
-  --chart-3: var(--accent-foreground);
-  --chart-5: color-mix(in srgb, var(--accent-foreground) 70%, var(--foreground));
-  --radius: 0.45rem;
+  --navy: oklch(0.2077 0.0398 265.7549);
+  --background: oklch(0.9751 0.0127 244.2507);
+  --foreground: oklch(0.3729 0.0306 259.7328);
+  --heading: oklch(0.2077 0.0398 265.7549);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.3729 0.0306 259.7328);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.3729 0.0306 259.7328);
+  --primary: oklch(0.7227 0.192 149.5793);
+  --primary-foreground: var(--navy);
+  --primary-strong: oklch(0.5081 0.1049 165.6121);
+  --secondary: oklch(0.9514 0.025 236.8242);
+  --secondary-foreground: oklch(0.4461 0.0263 256.8018);
+  --muted: oklch(0.967 0.0029 264.5419);
+  --muted-foreground: oklch(0.5110 0.0234 264.3637);
+  --accent: oklch(0.9505 0.0507 163.0508);
+  --accent-foreground: oklch(0.3729 0.0306 259.7328);
+  --destructive: oklch(0.6368 0.2078 25.3313);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9276 0.0058 264.5313);
+  --input: oklch(0.9276 0.0058 264.5313);
+  --ring: oklch(0.7227 0.192 149.5793);
+  --chart-1: oklch(0.7227 0.192 149.5793);
+  --chart-2: oklch(0.6959 0.1491 162.4796);
+  --chart-3: oklch(0.596 0.1274 163.2254);
+  --chart-4: oklch(0.5081 0.1049 165.6121);
+  --chart-5: oklch(0.4318 0.0865 166.9128);
+  --brand: var(--primary);
+  --brand-foreground: var(--primary-foreground);
+  --hero-bg:
+    radial-gradient(60% 80% at 92% 0%, color-mix(in oklch, var(--primary) 26%, transparent), transparent 70%),
+    radial-gradient(50% 70% at 0% 100%, color-mix(in oklch, var(--secondary) 90%, transparent), transparent 70%);
+  --radius: 0.5rem;
 }
 
 .dark {
   color-scheme: dark;
-  --brand: #ff4501;
-  --brand-foreground: #000000;
-  --background: #09090b;
-  --foreground: #fafafa;
-  --card: #18181b;
-  --card-foreground: var(--foreground);
-  --popover: var(--card);
-  --popover-foreground: var(--foreground);
-  --primary: #ff5a1f;
-  --primary-foreground: var(--brand-foreground);
-  --secondary: #27272a;
-  --secondary-foreground: var(--foreground);
-  --muted: var(--secondary);
-  --muted-foreground: #a1a1aa;
-  --accent: #3a1810;
-  --accent-foreground: #ff7a4d;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --border: var(--secondary);
-  --input: var(--border);
-  --ring: var(--primary);
-  --chart-3: var(--accent-foreground);
-  --chart-5: color-mix(in srgb, var(--accent-foreground) 70%, var(--foreground));
+  --background: oklch(0.2077 0.0398 265.7549);
+  --foreground: oklch(0.8717 0.0093 258.3382);
+  --heading: oklch(0.96 0.006 258);
+  --card: oklch(0.2795 0.0368 260.031);
+  --card-foreground: oklch(0.8717 0.0093 258.3382);
+  --popover: oklch(0.2795 0.0368 260.031);
+  --popover-foreground: oklch(0.8717 0.0093 258.3382);
+  --primary: oklch(0.7729 0.1535 163.2231);
+  --primary-foreground: oklch(0.2077 0.0398 265.7549);
+  --primary-strong: oklch(0.7729 0.1535 163.2231);
+  --secondary: oklch(0.3351 0.0331 260.912);
+  --secondary-foreground: oklch(0.7118 0.0129 286.0665);
+  --muted: oklch(0.2463 0.0275 259.9628);
+  --muted-foreground: oklch(0.6810 0.0234 264.3637);
+  --accent: oklch(0.3729 0.0306 259.7328);
+  --accent-foreground: oklch(0.8717 0.0093 258.3382);
+  --destructive: oklch(0.6368 0.2078 25.3313);
+  --destructive-foreground: oklch(0.2077 0.0398 265.7549);
+  --border: oklch(0.3800 0.0263 256.8018);
+  --input: oklch(0.4461 0.0263 256.8018);
+  --ring: oklch(0.7729 0.1535 163.2231);
+  --chart-1: oklch(0.7729 0.1535 163.2231);
+  --chart-2: oklch(0.7845 0.1325 181.912);
+  --chart-3: oklch(0.7227 0.192 149.5793);
+  --chart-4: oklch(0.6959 0.1491 162.4796);
+  --chart-5: oklch(0.596 0.1274 163.2254);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    scrollbar-width: none;
+  }
+  *::-webkit-scrollbar {
+    display: none;
   }
   body {
     @apply bg-background text-foreground;
@@ -194,6 +216,12 @@
   }
   html {
     @apply font-sans;
+  }
+  /* In-page navigation glides unless motion is reduced. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 }
 
@@ -213,10 +241,313 @@
   transition-timing-function: var(--ease-standard);
 }
 
+.showcase-live {
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: var(--brand);
+}
+
+.showcase-live::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: showcase-pulse 2s var(--ease-out) infinite;
+}
+
+@keyframes showcase-pulse {
+  to {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
+/* Page layout follows wialon.com: promo bar, sticky header with menus, hero with a capability row,
+   then alternating content sections, and a multi-column footer. */
+.shell {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-8 site-nav:px-12;
+}
+
+.topbar {
+  background: var(--navy);
+  color: oklch(0.95 0.01 250);
+}
+
+.topbar a {
+  @apply font-semibold underline underline-offset-4;
+  color: var(--primary);
+}
+
+.site-header {
+  @apply sticky top-0 z-40 border-b border-border;
+  background: color-mix(in oklch, var(--background) 88%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.brand {
+  @apply inline-flex min-h-11 items-center gap-2 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  color: var(--heading);
+}
+
+.brand-by {
+  @apply hidden border-l border-border pl-2 text-xs leading-4 font-medium text-muted-foreground sm:block;
+}
+
+.nav-menu {
+  position: relative;
+}
+
+.nav-trigger,
+.nav-link {
+  @apply flex h-10 cursor-pointer list-none items-center gap-1 rounded-full px-3.5 text-[0.95rem] font-medium outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring;
+  color: var(--heading);
+}
+
+.nav-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.nav-menu[open] .nav-trigger {
+  background: var(--muted);
+}
+
+.nav-menu[open] .nav-chevron {
+  rotate: 180deg;
+}
+
+.nav-chevron {
+  transition: rotate var(--duration-normal) var(--ease-standard);
+}
+
+.nav-panel {
+  @apply absolute top-full left-0 z-50 mt-2 grid w-80 gap-1 rounded-2xl border border-border bg-popover p-2 text-popover-foreground;
+  box-shadow: 0 24px 48px -20px color-mix(in oklch, var(--navy) 35%, transparent);
+  animation: nav-panel-in var(--duration-normal) var(--ease-out);
+}
+
+.nav-panel a {
+  @apply grid gap-0.5 rounded-xl px-3 py-2.5 outline-none hover:bg-muted focus-visible:bg-muted;
+}
+
+.nav-panel strong {
+  @apply text-sm font-semibold;
+  color: var(--heading);
+}
+
+.nav-panel span {
+  @apply text-xs leading-4 text-muted-foreground;
+}
+
+@keyframes nav-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+}
+
+.mobile-panel {
+  @apply absolute inset-x-0 top-full max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-border bg-background px-5 pb-6 sm:px-8;
+}
+
+.hero {
+  background-color: var(--background);
+  background-image: var(--hero-bg);
+}
+
+.eyebrow {
+  @apply inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary-strong);
+}
+
+.display {
+  @apply font-heading text-4xl leading-[1.05] font-bold tracking-tight text-balance sm:text-5xl site-nav:text-6xl;
+  color: var(--heading);
+}
+
+.section {
+  @apply py-16 site-nav:py-24;
+}
+
+.section-alt {
+  background: var(--card);
+}
+
+.section-head {
+  @apply grid max-w-3xl gap-4;
+}
+
+.section-head h2 {
+  @apply font-heading text-3xl leading-tight font-bold tracking-tight text-balance sm:text-[2.6rem];
+  color: var(--heading);
+}
+
+.section-head p {
+  @apply text-lg leading-7 text-muted-foreground;
+}
+
+.card {
+  @apply rounded-2xl border border-border bg-card text-card-foreground;
+}
+
+.icon-badge {
+  @apply grid size-11 place-items-center rounded-xl;
+  background: var(--accent);
+  color: var(--primary-strong);
+}
+
+.card-title {
+  @apply text-lg leading-6 font-semibold;
+  color: var(--heading);
+}
+
+.text-link {
+  @apply inline-flex items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline;
+  transition-property: color, opacity, text-decoration-color;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--ease-standard);
+  color: var(--primary-strong);
+}
+
+.media {
+  @apply overflow-hidden rounded-2xl bg-muted;
+  position: relative;
+}
+
+.media img {
+  @apply h-full w-full object-cover;
+  transition: scale 600ms var(--ease-out);
+}
+
+.zoom:hover .media img,
+.zoom:focus-within .media img {
+  scale: 1.05;
+}
+
+.live-chip {
+  @apply absolute bottom-3 left-3 flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs leading-4;
+  background: color-mix(in oklch, var(--card) 92%, transparent);
+  color: var(--card-foreground);
+  backdrop-filter: blur(8px);
+}
+
+.ai-panel {
+  @apply overflow-hidden rounded-3xl p-8 sm:p-12;
+  background: var(--navy);
+  color: oklch(0.9 0.01 258);
+}
+
+.ai-panel h2 {
+  color: oklch(0.98 0.005 258);
+}
+
+.question {
+  @apply flex items-start gap-3 rounded-2xl border px-4 py-3 text-base leading-6;
+  border-color: oklch(1 0 0 / 0.14);
+  background: oklch(1 0 0 / 0.04);
+}
+
+.banner {
+  @apply grid items-center gap-6 rounded-3xl p-8 sm:p-10 site-nav:grid-cols-[1fr_auto];
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.faq-item {
+  @apply border-b border-border;
+}
+
+.faq-item summary {
+  @apply flex cursor-pointer list-none items-start justify-between gap-6 py-5 text-lg leading-7 font-semibold outline-none;
+  color: var(--heading);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary:focus-visible {
+  @apply rounded-md ring-2 ring-ring;
+}
+
+.faq-icon {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.4rem;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 2px;
+  translate: 0 -50%;
+  border-radius: 1px;
+  background: currentColor;
+  transition: rotate var(--duration-normal) var(--ease-standard);
+}
+
+.faq-icon::after {
+  rotate: 90deg;
+}
+
+.faq-item[open] .faq-icon::after {
+  rotate: 0deg;
+}
+
+.site-footer {
+  background: var(--navy);
+  color: oklch(0.82 0.012 258);
+}
+
+.site-footer h2 {
+  @apply mb-3 text-sm font-semibold;
+  color: oklch(0.98 0.005 258);
+}
+
+.site-footer a {
+  transition-property: color, opacity, text-decoration-color;
+  transition-duration: var(--duration-fast);
+  transition-timing-function: var(--ease-standard);
+}
+
+.site-footer a:hover {
+  color: oklch(0.98 0.005 258);
+}
+
+.footer-rule {
+  border-color: oklch(1 0 0 / 0.12);
+}
+
+.social {
+  @apply grid size-10 place-items-center rounded-full border;
+  border-color: oklch(1 0 0 / 0.18);
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root {
     --duration-fast: 0ms;
     --duration-normal: 0ms;
     --duration-slow: 0ms;
+  }
+
+  .showcase-live::after,
+  .nav-panel {
+    animation: none;
+  }
+
+  .media img {
+    transition: none;
+  }
+
+  .motion-press:active:not(:disabled):not([aria-disabled="true"]) {
+    transform: none;
   }
 }

@@ -1,0 +1,43 @@
+---
+import { RiLinkedinFill, RiTwitterXFill } from "@remixicon/react";
+import { footerColumns, links, product, tagged } from "../lib/site";
+---
+
+<footer class="site-footer">
+  <div class="shell grid gap-12 py-14 site-nav:grid-cols-[minmax(0,1.2fr)_minmax(0,3fr)] site-nav:py-16">
+    <div class="grid content-start gap-5">
+      <a href="/" class="inline-flex w-fit items-center gap-2 rounded-md text-[oklch(0.98_0.005_258)] outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label={`${product.name} home`}>
+        <span class="font-heading text-[2.1rem] leading-none font-extrabold tracking-tight">90<span class="text-[var(--primary)]">+</span></span>
+      </a>
+      <p class="max-w-xs text-sm leading-6">GPS fleet tracking, routing, and reporting for fleets of every size.</p>
+      <div class="flex gap-2">
+        <a href={links.x} class="social" aria-label={`${product.maker} on X`}><RiTwitterXFill aria-hidden="true" className="size-4" /></a>
+        <a href={links.linkedin} class="social" aria-label={`${product.maker} on LinkedIn`}><RiLinkedinFill aria-hidden="true" className="size-4" /></a>
+      </div>
+    </div>
+    <nav aria-label="Footer" class="grid grid-cols-2 gap-8 sm:grid-cols-4">
+      {footerColumns.map((column) => (
+        <div>
+          <h2>{column.title}</h2>
+          <ul class="grid gap-2 text-sm">
+            {column.items.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+          </ul>
+        </div>
+      ))}
+    </nav>
+  </div>
+  <div class="footer-rule border-t">
+    <div class="shell flex flex-col gap-4 py-6 text-sm site-nav:flex-row site-nav:items-center site-nav:justify-between">
+      <p>
+        Powered by <a href={tagged(`${product.makerUrl}/`, "footer")} class="font-semibold text-[oklch(0.98_0.005_258)] underline underline-offset-4">{product.maker}</a>.
+        {product.name} is an {product.maker} product.
+      </p>
+      <div class="flex flex-wrap gap-x-5 gap-y-2">
+        <a href={links.privacy}>Privacy Policy</a>
+        <a href={links.terms}>Terms of Service</a>
+        <a href={links.dataDeletion}>Data deletion</a>
+        <span>Copyright © 2026 {product.makerLegalName}</span>
+      </div>
+    </div>
+  </div>
+</footer>

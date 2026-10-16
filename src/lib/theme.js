@@ -1,7 +1,6 @@
 // Inlined in the document head so the selected palette applies before paint.
 (() => {
-  const storageKey = "9ntyplus-theme";
-  const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const storageKey = "opesi-theme";
   const isTheme = (value) => value === "light" || value === "dark";
   const readPreference = () => {
     try {
@@ -13,13 +12,13 @@
   };
   let preference = readPreference();
   const applyTheme = () => {
-    const theme = preference ?? (systemTheme.matches ? "dark" : "light");
+    const theme = preference ?? "light";
     document.documentElement.classList.toggle("dark", theme === "dark");
-    window.dispatchEvent(new Event("9ntyplus:theme-changed"));
+    window.dispatchEvent(new Event("opesi:theme-changed"));
   };
 
   applyTheme();
-  window.addEventListener("9ntyplus:theme-change", (event) => {
+  window.addEventListener("opesi:theme-change", (event) => {
     const theme = /** @type {CustomEvent<string>} */ (event).detail;
     if (!isTheme(theme)) return;
     preference = theme;
@@ -29,9 +28,6 @@
       // Keep the selection for this page when storage is unavailable.
     }
     applyTheme();
-  });
-  systemTheme.addEventListener("change", () => {
-    if (preference === null) applyTheme();
   });
   window.addEventListener("storage", (event) => {
     if (event.key !== storageKey && event.key !== null) return;

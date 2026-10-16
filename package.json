@@ -7,11 +7,14 @@
     "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
     "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
-    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check"
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "icons:generate": "node scripts/generate-icons.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^7.0.0",
+    "@astrojs/sitemap": "^3.7.4",
     "@base-ui/react": "^1.8.0",
+    "@remixicon/react": "^4.9.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.5",
     "class-variance-authority": "^0.7.1",
@@ -25,7 +28,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "shadcn": "^4.21.1",
+    "shadcn": "^4.21.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   },

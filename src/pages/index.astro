@@ -1,13 +1,287 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { GravityStarsBackground } from "../components/ui/gravity-stars";
+import { buttonVariants } from "../components/ui/button";
+import { EmailStartForm } from "../components/email-start-form";
+import { earlyAccess, industries, links, product, talkToSales } from "../lib/site";
+import {
+  RiArrowRightLine,
+  RiBarChartBoxLine,
+  RiChat3Line,
+  RiCustomerService2Line,
+  RiDatabase2Line,
+  RiGlobalLine,
+  RiLockLine,
+  RiMapPin2Line,
+  RiPlugLine,
+  RiRoadMapLine,
+  RiShieldCheckLine,
+  RiSparkling2Line,
+  RiTeamLine,
+  RiTruckLine,
+  RiUserStarLine,
+} from "@remixicon/react";
+
+// Section order follows wialon.com. 90+ is new, so Wialon's usage counters, certifications, testimonials,
+// and awards are replaced with what is true today. Photos are CC0 placeholders (public/images/SOURCES.md).
+
+const suite = [
+  { title: "90+ Live Map", description: "See every vehicle and asset in real time, with trip history a click away.", icon: RiMapPin2Line },
+  { title: "90+ Routes", description: "Plan and dispatch routes that cover the job with fewer kilometres.", icon: RiRoadMapLine },
+  { title: "90+ Safety", description: "Spot speeding and harsh driving early and coach drivers with facts.", icon: RiShieldCheckLine },
+  { title: "90+ Reports", description: "Trip, time-on-site, and cost reports shaped around your operation.", icon: RiBarChartBoxLine },
+];
+
+const functionality = [
+  { title: "Live GPS tracking", description: "Know where every vehicle is right now.", image: "/images/live-map.jpg", alt: "A highway through dense forest seen from above with vehicles on the road." },
+  { title: "Route optimization", description: "Finish routes with fewer kilometres and vehicles.", image: "/images/routes.jpg", alt: "Two straight parallel roads through a palm plantation, seen from above." },
+  { title: "Driver behavior monitoring", description: "Catch speeding and harsh driving as it happens.", image: "/images/speeding.jpg", alt: "The view from a driver's seat over the dashboard onto a highway at dusk." },
+  { title: "Trailer and cargo sensors", description: "Track doors, temperature, and location for every load.", image: "/images/cargo.jpg", alt: "Rows of shipping containers across a busy port." },
+];
+
+const benefits = [
+  { title: "Fits any industry", description: "Delivery, construction, transport, and field services run on the same platform.", icon: RiGlobalLine },
+  { title: "Works with your vehicles", description: "We confirm the right tracking hardware for the vehicles and routes you run.", icon: RiTruckLine },
+  { title: "Connects to your systems", description: "Send fleet data to the business tools your team already uses.", icon: RiPlugLine },
+  { title: "Setup and training", description: "We plan the rollout with you and train your dispatchers and drivers.", icon: RiUserStarLine },
+  { title: "Local support", description: `Talk to the ${product.maker} team that builds and runs 90+.`, icon: RiCustomerService2Line },
+  { title: "Reports your way", description: "Choose the numbers that matter and get them on your schedule.", icon: RiBarChartBoxLine },
+];
+
+const commitments = [
+  { title: "Permission controls", description: "Decide who can see which vehicles, drivers, and reports.", icon: RiLockLine },
+  { title: "Your data stays yours", description: "Your fleet records belong to you, and you can ask for an export at any time.", icon: RiDatabase2Line },
+  { title: "Support from the builders", description: `Questions go straight to the ${product.maker} team behind the product.`, icon: RiTeamLine },
+];
+
+const questions = [
+  "Which vehicles were idling for more than 20 minutes today?",
+  "Where is the van that is due at the Westlands drop next?",
+  "How much fuel did the fleet use on Mombasa Road this week?",
+];
+
+const faqs = [
+  { question: "What is GPS fleet tracking and how does it work?", answer: "A GPS tracker in each vehicle works out where the vehicle is and sends that location over the mobile network. 90+ shows those locations on a live map alongside trip history and alerts, so managers can see what is happening without phoning drivers." },
+  { question: "Who makes 90+?", answer: `90+ is built by ${product.maker}. We design the product, support your rollout, and work with you directly as your fleet grows.` },
+  { question: "How will my drivers react to being tracked?", answer: "Concerns usually ease when tracking supports drivers rather than watches them. Explain why you are introducing it, such as faster help after a breakdown, fair records in a dispute, and recognition for safe driving, and agree who can see the data." },
+  { question: "How much does 90+ cost?", answer: "Pricing depends on how many vehicles and assets you want to track and the features you need. Tell us about your fleet and we will send a quote." },
+  { question: "Is it easy to install and set up?", answer: "We walk you through installation for your vehicle types and help your team get started. Share your fleet size and locations and we will plan the rollout with you." },
+  { question: "Does 90+ work on 4G networks and across borders?", answer: "Tell us where your vehicles operate and we will confirm the right hardware and network coverage for your routes." },
+];
 ---
 
-<BaseLayout>
-  <main class="relative isolate flex min-h-dvh items-center justify-center px-5 py-24 sm:px-8">
-    <GravityStarsBackground client:load className="absolute inset-0" aria-hidden="true" />
-    <section aria-labelledby="coming-soon-heading" class="relative z-10 w-full max-w-2xl text-center">
-      <h1 id="coming-soon-heading" class="font-heading text-4xl font-medium leading-tight tracking-tight text-balance sm:text-5xl">Something exciting is happening.</h1>
+<BaseLayout
+  title={`${product.name} GPS Fleet Tracking | An ${product.maker} product`}
+  description={`${product.name} by ${product.maker}: real-time GPS fleet tracking, routing, driver safety, and reporting for fleets of every size.`}
+>
+  <main class="flex-1">
+    <section aria-labelledby="hero-heading" class="hero">
+      <div class="shell grid items-center gap-10 py-12 site-nav:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] site-nav:gap-16 site-nav:py-20">
+        <div class="flex min-w-0 flex-col items-start">
+          <h1 id="hero-heading" class="display">Keep every vehicle on track with {product.name}</h1>
+          <p class="mt-5 max-w-xl text-lg leading-7 text-muted-foreground">Live GPS tracking, routes, and driver safety in one place.</p>
+          <div class="w-full max-w-xl">
+            <EmailStartForm client:load placement="hero-form" />
+          </div>
+          <a href={talkToSales("hero")} class="text-link mt-4">Prefer a call? Talk to sales <RiArrowRightLine aria-hidden="true" className="size-4" /></a>
+        </div>
+        <figure class="media aspect-[4/3] shadow-[0_30px_60px_-30px_color-mix(in_oklch,var(--navy)_45%,transparent)]">
+          <img src="/images/hero-interchange.jpg" alt="An aerial view of a busy multi-level highway interchange surrounded by trees and city blocks." width="1200" height="899" loading="eager" fetchpriority="high" />
+          <figcaption class="live-chip">
+            <span aria-hidden="true" class="showcase-live"></span>
+            <span><strong class="font-semibold">Van KDA 482X</strong> <span class="text-muted-foreground">On route, updated 12s ago</span></span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="suite" aria-labelledby="suite-heading" class="section scroll-mt-20">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="suite-heading">Meet the {product.name} suite</h2>
+          <p>Four tools that work together, so your team sees the whole operation in one place.</p>
+        </div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-2 site-nav:grid-cols-4">
+          {suite.map(({ title, description, icon: Icon }) => (
+            <article class="card flex flex-col gap-4 p-6">
+              <span class="icon-badge"><Icon aria-hidden="true" className="size-5" /></span>
+              <h3 class="card-title">{title}</h3>
+              <p class="flex-1 text-sm leading-6 text-muted-foreground">{description}</p>
+              <a href={earlyAccess("suite")} class="text-link">Early Access <RiArrowRightLine aria-hidden="true" className="size-4" /></a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="functionality" aria-labelledby="functionality-heading" class="section section-alt scroll-mt-20">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="functionality-heading">{product.name} key functionality</h2>
+          <p>The everyday tools fleet managers reach for first.</p>
+        </div>
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 site-nav:grid-cols-4">
+          {functionality.map((item) => (
+            <article class="zoom grid content-start gap-4">
+              <div class="media aspect-[4/3]"><img src={item.image} alt={item.alt} width="1400" height="933" loading="lazy" decoding="async" /></div>
+              <div class="grid gap-1">
+                <h3 class="card-title">{item.title}</h3>
+                <p class="text-sm leading-6 text-muted-foreground">{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <a href={earlyAccess("functionality")} class={buttonVariants({ size: "lg", className: "mt-10 min-h-11 rounded-full px-6 font-semibold" })}>Early Access <RiArrowRightLine aria-hidden="true" /></a>
+      </div>
+    </section>
+
+    <section aria-labelledby="benefits-heading" class="section">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="benefits-heading">{product.name} highlights and benefits</h2>
+          <p>Built for the way fleets actually work, from the first vehicle to the five-hundredth.</p>
+        </div>
+        <ul class="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2 site-nav:grid-cols-3">
+          {benefits.map(({ title, description, icon: Icon }) => (
+            <li class="flex gap-4">
+              <span class="icon-badge shrink-0"><Icon aria-hidden="true" className="size-5" /></span>
+              <div class="grid gap-1.5">
+                <h3 class="card-title">{title}</h3>
+                <p class="text-sm leading-6 text-muted-foreground">{description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="commitments-heading" class="section section-alt">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="commitments-heading">Our commitments: security and support</h2>
+          <p>How we look after your fleet data and the people who use {product.name}.</p>
+        </div>
+        <div class="mt-10 grid gap-4 site-nav:grid-cols-3">
+          {commitments.map(({ title, description, icon: Icon }) => (
+            <article class="card grid content-start gap-4 p-6 sm:p-8">
+              <span class="icon-badge"><Icon aria-hidden="true" className="size-5" /></span>
+              <h3 class="card-title">{title}</h3>
+              <p class="text-sm leading-6 text-muted-foreground">{description}</p>
+            </article>
+          ))}
+        </div>
+        <a href={links.privacy} class="text-link mt-8">Read our privacy policy <RiArrowRightLine aria-hidden="true" className="size-4" /></a>
+      </div>
+    </section>
+
+    <section aria-labelledby="hardware-heading" class="section">
+      <div class="shell grid items-center gap-10 site-nav:grid-cols-2 site-nav:gap-16">
+        <div class="section-head">
+          <h2 id="hardware-heading">Works with the vehicles you already run</h2>
+          <p>Cars, vans, trucks, trailers, and heavy equipment can all report to {product.name}. Tell us what you drive and where, and we will recommend tracking hardware that fits.</p>
+          <a href={talkToSales("hardware")} class={buttonVariants({ size: "lg", className: "mt-2 min-h-11 w-fit rounded-full px-6 font-semibold" })}>Talk to sales</a>
+        </div>
+        <div class="media aspect-[16/10]"><img src="/images/vehicles.jpg" alt="A delivery truck on an open highway beneath mountains and heavy clouds." width="1600" height="1067" loading="lazy" decoding="async" /></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="ai-heading" class="section pt-0 site-nav:pt-0">
+      <div class="shell">
+        <div class="ai-panel grid gap-10 site-nav:grid-cols-2 site-nav:items-center">
+          <div class="grid gap-4">
+            <p class="eyebrow w-fit border-[oklch(1_0_0/0.18)] bg-transparent text-[var(--primary)]"><RiSparkling2Line aria-hidden="true" className="size-3.5" /> Coming soon</p>
+            <h2 id="ai-heading" class="font-heading text-3xl leading-tight font-bold tracking-tight text-balance sm:text-[2.6rem]">Your fleet has the answers. With {product.name}, just ask.</h2>
+            <p class="text-base leading-7">{product.maker} builds AI assistants, and {product.name} is getting one. Ask about your fleet in plain language and get an answer from your own data.</p>
+            <a href={earlyAccess("ai-panel")} class={buttonVariants({ size: "lg", className: "mt-2 min-h-11 w-fit rounded-full px-6 font-semibold" })}>Early Access</a>
+          </div>
+          <ul class="grid gap-3" aria-label="Example questions">
+            {questions.map((question) => (
+              <li class="question"><RiChat3Line aria-hidden="true" className="mt-1 size-5 shrink-0 text-[var(--primary)]" />{question}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="industries" aria-labelledby="industries-heading" class="section section-alt scroll-mt-20">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="industries-heading">Suitable for fleets of any size and industry</h2>
+          <p>Start with the problem you need solved today and grow into the rest.</p>
+        </div>
+        <div class="mt-10 grid gap-5 sm:grid-cols-2 site-nav:grid-cols-4">
+          {industries.map((item) => (
+            <a href={earlyAccess("industries")} class="zoom card group grid content-start overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-ring">
+              <div class="media aspect-[16/10] rounded-none"><img src={item.image} alt={item.alt} width="1400" height="933" loading="lazy" decoding="async" /></div>
+              <div class="grid gap-1.5 p-5">
+                <h3 class="card-title group-hover:underline group-hover:underline-offset-4">{item.title}</h3>
+                <p class="text-sm leading-6 text-muted-foreground">{item.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="grow-heading" class="section">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="grow-heading">Grow your business with us</h2>
+        </div>
+        <div class="mt-10 grid gap-4 site-nav:grid-cols-2">
+          <article class="card grid content-start gap-4 p-8 sm:p-10">
+            <h3 class="font-heading text-2xl font-bold tracking-tight text-[var(--heading)]">Become a {product.name} partner</h3>
+            <p class="text-base leading-7 text-muted-foreground">Installers, resellers, and telematics providers can offer {product.name} to their customers with support from {product.maker}.</p>
+            <a href={talkToSales("partners")} class={buttonVariants({ size: "lg", className: "min-h-11 w-fit rounded-full px-6 font-semibold" })}>Talk to sales</a>
+          </article>
+          <article class="card grid content-start gap-4 p-8 sm:p-10">
+            <h3 class="font-heading text-2xl font-bold tracking-tight text-[var(--heading)]">Talk to a fleet specialist</h3>
+            <p class="text-base leading-7 text-muted-foreground">Tell us about your vehicles, routes, and goals. We will show you how {product.name} would work for your fleet.</p>
+            <a href={talkToSales("partners")} class={buttonVariants({ variant: "outline", size: "lg", className: "min-h-11 w-fit rounded-full px-6" })}>Talk to sales</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="demo-heading" class="section pt-0 site-nav:pt-0">
+      <div class="shell">
+        <div class="banner">
+          <div class="grid gap-2">
+            <h2 id="demo-heading" class="font-heading text-2xl font-bold tracking-tight sm:text-3xl">See {product.name} on your own fleet</h2>
+            <p class="max-w-2xl text-base leading-7">Book a 30-minute live demo. We will walk through the map, alerts, and reports using routes like yours.</p>
+          </div>
+          <a href={talkToSales("demo-banner")} class={buttonVariants({ variant: "secondary", size: "lg", className: "min-h-11 w-fit rounded-full bg-[var(--navy)] px-6 font-semibold text-white hover:bg-[var(--navy)]/90" })}>Talk to sales</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faqs" aria-labelledby="faq-heading" class="section section-alt scroll-mt-20">
+      <div class="shell grid gap-10 site-nav:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] site-nav:gap-16">
+        <div class="section-head content-start">
+          <h2 id="faq-heading">Questions about {product.name}</h2>
+          <p>Cannot find what you need? <a href={talkToSales("faqs")} class="font-semibold text-[var(--primary-strong)] underline underline-offset-4">Talk to sales</a>.</p>
+        </div>
+        <div class="border-t border-border">
+          {faqs.map(({ question, answer }) => (
+            <details class="faq-item">
+              <summary><span>{question}</span><span aria-hidden="true" class="faq-icon"></span></summary>
+              <p class="pb-6 text-base leading-7 text-muted-foreground">{answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="start-heading" class="section">
+      <div class="shell grid items-center gap-8 site-nav:grid-cols-2 site-nav:gap-16">
+        <div class="section-head">
+          <h2 id="start-heading">Never lose sight of your fleet</h2>
+          <p>Leave your work email and we will set up {product.name} with you. {product.name} is an {product.maker} product.</p>
+        </div>
+        <div class="w-full max-w-xl site-nav:justify-self-end">
+          <EmailStartForm client:visible placement="closing-form" />
+          <p class="mt-3 text-xs leading-5 text-muted-foreground">By continuing you agree to the <a href={links.privacy} class="underline underline-offset-4">Privacy Policy</a>.</p>
+        </div>
+      </div>
     </section>
   </main>
 </BaseLayout>

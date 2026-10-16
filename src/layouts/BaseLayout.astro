@@ -1,8 +1,20 @@
 ---
 import "../styles/global.css";
 import themeScript from "../lib/theme.js?raw";
+import SiteHeader from "../components/site-header.astro";
+import SiteFooter from "../components/site-footer.astro";
+import { product } from "../lib/site";
 
-const { title = "9ntyplus" } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${product.name} | GPS fleet tracking by ${product.maker}`,
+  description = `${product.name} is an ${product.maker} product for real-time GPS fleet tracking, routing, and reporting.`,
+} = Astro.props;
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -11,10 +23,24 @@ const { title = "9ntyplus" } = Astro.props;
     <meta charset="UTF-8" />
     <script is:inline set:html={themeScript} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Something exciting is happening at 9ntyplus." />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={pageUrl} />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={product.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={pageUrl} />
+    <meta name="twitter:card" content="summary" />
   </head>
-  <body class="min-h-dvh bg-background text-foreground">
+  <body class="flex min-h-dvh flex-col bg-background text-foreground">
+    <SiteHeader />
     <slot />
+    <SiteFooter />
   </body>
 </html>
