@@ -1,4 +1,7 @@
 import { FireworksBackground } from "@/components/fireworks-background";
+import { TextMorph } from "@/components/text-morph";
+
+const headline = ["Something exciting", "is happening."];
 
 export default function Home() {
   return (
@@ -11,9 +14,8 @@ export default function Home() {
           </p>
           <p className="mt-1 text-base text-muted">by Opesi Mansion</p>
         </div>
-        <h1 className="max-w-[16ch] text-balance text-[clamp(2rem,6vw,3.5rem)] font-extrabold leading-tight tracking-tight">
-          Something exciting is happening.
-        </h1>
+        <h1 className="sr-only">Something exciting is happening.</h1>
+        <TextMorph texts={headline} className="max-w-3xl text-[clamp(2.25rem,8vw,4.5rem)]" />
       </main>
       <footer className="absolute inset-x-0 bottom-4 z-10 text-center text-sm text-muted">
         <a href="https://www.opesimansion.com" className="hover:underline">
