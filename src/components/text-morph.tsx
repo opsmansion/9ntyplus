@@ -6,6 +6,8 @@ import { useEffect, useId, useRef, useState } from "react";
 // each other, and an SVG threshold filter turns the overlapping blur into a liquid merge. The animation
 // writes styles directly to the two spans instead of setting React state every frame. Screen readers and
 // reduced-motion visitors get the plain sentence instead.
+// The SVG threshold filter is slow in Safari on iPhone, so touch devices get a plain blur crossfade and only
+// devices with a mouse or trackpad get the liquid merge.
 
 export function TextMorph({
   texts,
@@ -22,13 +24,22 @@ export function TextMorph({
   const firstRef = useRef<HTMLSpanElement>(null);
   const secondRef = useRef<HTMLSpanElement>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [liquid, setLiquid] = useState(false);
 
   useEffect(() => {
-    const query = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const update = () => setReducedMotion(query.matches);
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const pointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const update = () => {
+      setReducedMotion(motion.matches);
+      setLiquid(pointer.matches);
+    };
     update();
-    query.addEventListener("change", update);
-    return () => query.removeEventListener("change", update);
+    motion.addEventListener("change", update);
+    pointer.addEventListener("change", update);
+    return () => {
+      motion.removeEventListener("change", update);
+      pointer.removeEventListener("change", update);
+    };
   }, []);
 
   useEffect(() => {
@@ -115,7 +126,7 @@ export function TextMorph({
 
   return (
     <div aria-hidden="true" className={`relative w-full ${className ?? ""}`} style={{ height: "1.3em" }}>
-      <svg className="absolute h-0 w-0">
+      {liquid && <svg className="absolute h-0 w-0">
         <defs>
           <filter id={filterId}>
             <feColorMatrix
@@ -128,8 +139,8 @@ export function TextMorph({
             />
           </filter>
         </defs>
-      </svg>
-      <div className="absolute inset-0 flex items-center" style={{ filter: `url(#${filterId}) blur(0.6px)` }}>
+      </svg>}
+      <div className="absolute inset-0 flex items-center" style={liquid ? { filter: `url(#${filterId}) blur(0.6px)` } : undefined}>
         <span ref={firstRef} className={spanClass} style={{ opacity: 0 }} />
         <span ref={secondRef} className={spanClass}>
           {texts[0]}
