@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+/* 90+ "Route Green" brand colours. The full token set is in brand/route-green-theme.css. */
+:root {
+  --navy: #0f172a;
+  --mint: #34d399;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-mint: var(--mint);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-reddit-sans);
+}
+
+body {
+  background: radial-gradient(120% 80% at 50% 110%, #12324a 0%, var(--navy) 60%);
+  color: var(--text);
+}

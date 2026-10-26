@@ -69,6 +69,7 @@ Every feature here must call a Meta model through the Meta Model API, or run a M
    - Muse Spark reads the photos, including labels, tags and serial numbers, and fills in those exact fields.
    - Every value is checked against eBay's allowed values for that field. Anything uncertain is marked "check this" rather than guessed.
    - Complete item specifics make listings easier to find on eBay and give AI agents precise facts.
+   - Size compliance for clothing and shoes: Muse Spark reads the size label (for example "W32 L30", "EU 42", "M") and maps it to eBay's standardized size values for that category. If the label is missing or unreadable, the seller is asked rather than given a guess. Since August 2026, eBay says it can block or hide apparel and footwear listings with non-standard, missing or incomplete sizes, so 90+ keeps them visible.
 3. Condition notes from photos (Muse Spark).
    - Spots visible flaws such as scratches, stains or missing parts, and writes honest condition notes linked to the photo that shows each one. Honest notes mean fewer returns and disputes.
 4. Channel-specific writing (Muse Spark).
@@ -89,7 +90,7 @@ Every feature here must call a Meta model through the Meta Model API, or run a M
 
 1. The problem: listing one item properly on eBay takes many minutes, and sellers have dozens.
 2. One photo of a full table becomes separate drafts with SAM 3.1.
-3. Muse Spark fills eBay's required item specifics and condition notes, with "check this" flags.
+3. Muse Spark fills eBay's required item specifics and condition notes, with "check this" flags. Show a jacket whose size label becomes eBay's standard size, with the line: "eBay can now hide listings like this. 90+ fixes it from the photo."
 4. The seller approves. The item is published to the eBay sandbox, and a ready-to-post Facebook Marketplace version appears.
 5. Show the agent's checks report, and the before and after time per listing.
 
@@ -99,6 +100,7 @@ Show only what was built during the hackathon.
 
 - Time: the slowest part of reselling, writing listings, drops from minutes per item to a quick review.
 - Visibility: complete eBay item specifics help eBay search and AI agents match the item to the right buyers.
+- No hidden listings: since August 2026, eBay can block or hide clothing and shoe listings with non-standard or missing sizes. 90+ reads the size label and fills in eBay's standard size, so listings stay visible. The rule is new, and many sellers may not have caught up with it, which makes it a timely reason to try 90+.
 - Fewer returns: honest, photo-linked condition notes.
 - Reach: the same item becomes ready for both eBay and Facebook Marketplace without retyping.
 - Safety and compliance: the seller approves every listing and every message. No bots buy, post or message for them.

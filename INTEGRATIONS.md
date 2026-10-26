@@ -55,7 +55,7 @@ APIs and what they do in 90+:
 | Browse API: `search` | Application token | Comparable active listings for price suggestions. Read-only. |
 
 Rules to respect:
-- Clothing and shoe sizes must be standardized. From August 2026, eBay may block or hide apparel and footwear listings with non-standard, missing or incomplete sizes. 90+ must map what Muse Spark reads from a label to eBay's allowed size values, and ask the seller when unsure. (Banner on the eBay developer portal, seen 26 October 2026.)
+- Clothing and shoe sizes must be standardized. Since August 2026, eBay can block or hide apparel and footwear listings with non-standard, missing or incomplete sizes. 90+ must map what Muse Spark reads from a label to eBay's allowed size values, and ask the seller when unsure. (Banner on the eBay developer portal, seen 26 October 2026.)
 - Some coin categories need standardized condition details on create and update. Leave coins out of the hackathon scope.
 - From 20 February 2026, eBay's User Agreement bans unapproved agents that place orders. 90+ never buys.
 - Read the eBay API License Agreement, especially on storing eBay data and showing it to third parties.
